@@ -5,7 +5,7 @@
 
 
 
-然后根据[Phaclon](https://phalconphp.com/zh/) 官网教程安装Phaclon
+然后根据[Phalcon](https://phalconphp.com/zh/) 官网教程安装Phaclon
 [这里](http://docs.iphalcon.cn/)是phalcon爱好者翻译的中文文档内容翻译的也差不多了，如果看不懂官网的英文的话可以用这个网站学习。
 
 安装好```Phaclon devtool```后
@@ -15,7 +15,7 @@
 ~cd  phalcon-Wechat-Order
 ~composer install
 ```
-这里引用了phalcon论坛大佬的autoload代码 如下
+这里引用了论坛大佬的autoload代码 如下
 
 ``` php
 <?php
