@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="艾伦餐厅管理网站">
+    <meta name="author" content="Jacky_CN">
+
+    <title>管理面板</title>
+
+    <?
+    echo $this->tag->stylesheetLink('vendor/bootstrap/css/bootstrap.min.css');
+    echo $this->tag->stylesheetLink('vendor/fontawesome-free/css/all.min.css');
+    echo $this->tag->stylesheetLink('vendor/datatables/dataTables.bootstrap4.css');
+    echo $this->tag->stylesheetLink('css/sb-admin.css');
+    echo $this->tag->javascriptInclude("vendor/jquery/jquery.min.js"); 
+    echo $this->tag->javascriptInclude("vendor/bootstrap/js/bootstrap.bundle.min.js");
+   
+    echo $this->getContent();
+   
+    echo $this->tag->javascriptInclude("vendor/jquery-easing/jquery.easing.min.js");
+    echo $this->tag->javascriptInclude("vendor/chart.js/Chart.min.js");
+    echo $this->tag->javascriptInclude("js/sb-admin.min.js");
+    echo $this->tag->javascriptInclude("vendor/datatables/jquery.dataTables.js");
+    echo $this->tag->javascriptInclude("vendor/datatables/dataTables.bootstrap4.js");
+    echo $this->tag->javascriptInclude("js/demo/datatables-demo.js");
+    ?> 
+
+</body>
+
+</html>

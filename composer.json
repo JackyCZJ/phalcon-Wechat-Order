@@ -1,0 +1,6 @@
+{
+	"require": {
+        "qcloud/weapp-sdk": "v2.2.1",
+		"yansongda/pay": "^2.4"
+    }
+}

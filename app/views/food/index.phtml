@@ -1,0 +1,67 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+ <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">餐品一览</li>
+          </ol>
+
+          <!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Data Table Example</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      
+                      <th>餐名</th>
+                      <th>价格</th>
+                      <th>类别</th>
+                      <th>状态</th>
+                      <th>销量</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <? 
+                  $robots = Food::find();
+                  foreach ($robots as $robot) {
+         ?>
+                  <tr>
+                      <td><?=$this->tag->LinkTo(['food/show/'.$robot->food_Id,
+
+                          'text'=>$robot->food_Name
+                      ]) ?></a></td>
+                      <td><?=$robot->food_Price?></td>
+                      <td><?=$robot->food_Type?></td>
+                      <td><?if($robot->food_Statue){
+                        echo "<p class='text-danger'>售罄</p>";
+                      }else{
+                        echo "<p class='text-primary'>在售</p>";
+                      }?></td>
+                      <td><?=$robot->food_hasSales?></td>
+                  </tr>
+      <?}?>
+    
+       
+                 </tbody>
+                </table>
+              </div>
+            </div>
+            
+          </div>
+
+         
+
+        </div>
+    

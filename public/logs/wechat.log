@@ -1,0 +1,4 @@
+2018-08-16 07:19:24 > DEBUG > Pre Order: ["pay/unifiedorder",{"appid":"wxb3fxxxxxxxxxxx","mch_id":"14577xxxx","nonce_str":"PaFuQqbcO0FtXj73","notify_url":"http://yanda.net.cn/notify.php","sign":"BAE3BC5036983DE78945F5591513BBCD","trade_type":"JSAPI","spbill_create_ip":"::1","out_trade_no":1534403964,"total_fee":"1","body":"test body - 测试","openid":"onkVf1FjWS5SBIixxxxxxx"}] []
+
+2018-08-16 07:19:24 > DEBUG > Request To Wechat Api ["https://api.mch.weixin.qq.com/sandboxnew/pay/unifiedorder",{"appid":"wxb3fxxxxxxxxxxx","mch_id":"14577xxxx","nonce_str":"PaFuQqbcO0FtXj73","notify_url":"http://yanda.net.cn/notify.php","sign":"BAE3BC5036983DE78945F5591513BBCD","trade_type":"JSAPI","spbill_create_ip":"::1","out_trade_no":1534403964,"total_fee":"1","body":"test body - 测试","openid":"onkVf1FjWS5SBIixxxxxxx"}] []
+

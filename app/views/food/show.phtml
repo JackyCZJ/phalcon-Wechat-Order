@@ -1,0 +1,152 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+ <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <?=$this->tag->linkTo(
+              	['index',
+              	'text'=>'主页'
+
+              ])?>
+            </li>
+            <li class="breadcrumb-item active">修改餐品</li>
+          </ol>
+
+        <?=$this->tag->form(
+        	['id'=>'food_form',
+        	'class'=>'form-group col-4'
+        ])?>
+		<?=$this->tag->textField(
+			[
+				'food_Id',
+				'value' =>$value,
+				'hidden'=>true,]
+		);
+		?>
+		<div class="form-group">
+		<label for='food_Name'>餐品名</label>
+		<?
+		$food = food::findFirstByfood_Id($value);
+		echo $this->tag->textField(
+			[
+				'food_Name',
+				'value'=>$food->food_Name,
+				'class'=>'form-control'
+			]
+		)?>
+	</div>
+
+	<div class="form-group">
+		<label for='food_Url'>餐品图片</label>
+		<?=$this->tag->image([
+			$food->food_Url,
+			'class'=>'card-img'
+		])?>
+		<div class="custom-file">
+			<?
+		echo $this->tag->fileField(array(
+				'food_Url',
+				'id'=>'#food_Url',
+				'class'=>'custom-file-input',
+				'placeholder'=>'餐品图片',
+				'accept'=>"image/jpeg,image/jpg,image/png",
+				
+			));
+			?>
+			<label class="custom-file-label" for="food_Url" aria-describedby="food_Url">选择图片</label>
+		</div>
+	</div>
+		<div class="form-group">
+		<label for='food_description'>餐品介绍</label>
+		<?
+		echo $this->tag->textField(
+			[
+				'food_description',
+				'value'=>$food->food_description,
+				'class'=>'form-control'
+			]
+		)?>
+	</div>
+	<div class="form-group">
+	<label for="food_type">餐品种类</label>
+		<?=$this->tag->select(array(
+    	'food_Type',
+    	Type::find(),
+    	'using'=>array('food_type','food_type'),
+    	'value'=>$food->food_Type,
+    	'class'=>'form-control',
+		));
+	?>
+	</div>
+	
+	<label for="food_Statue">餐品状态</label>
+	<div class="form-group">
+	<div class='btn-group' data-toggle="buttons">
+	<label class="btn btn-primary">
+		<input type="radio"  name="food_Statue" value="0" autocomplete="off">在售</input>
+	</label>
+	<label class="btn btn-danger">
+		<input type="radio"  name="food_Statue" value="1" autocomplete="off">售罄</input>
+	</label>
+	</div>
+	</div>
+
+	<div class="form-group">
+		<?=$this->tag->submitButton(
+		[
+			'更改',
+			'class'=>'btn btn-primary btn-block col-2'
+		]
+		);
+
+
+		?>
+	</div>
+
+
+        <?=$this->tag->endForm()?>
+
+  </div>
+  <script type="text/javascript"> 
+  	$('#food_Url').change(function(e){
+        var input = $("#food_Url");
+        var file = input[0].files[0];
+        if(!file.name){
+            alert("未选择图片");
+        }else{
+            var url = window.URL.createObjectURL(file);
+            $(".card-img").attr('src', url);
+        }
+    });
+    
+    $(document).ready(function(){
+		$('#food_form').submit(function(e){
+			e.preventDefault();
+			var formData = new FormData(this);
+			$.ajax({
+			
+				processData: false,
+				contentType: false,
+                url:"<?
+					
+
+                 echo $this->url->getBaseUri().'food/change'; ?>",
+                type:"post",
+                data: formData,
+                success:function(data){
+                   alert(data);
+                  	location.reload();
+                   return false;
+                },
+                error:function(e){
+                    alert('失败');
+                    return false;
+                }});});}
+);
+</script>

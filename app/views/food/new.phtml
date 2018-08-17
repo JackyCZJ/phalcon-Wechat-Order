@@ -1,0 +1,112 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+ <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">添加餐品</li>
+          </ol>
+		<?
+		echo $this->tag->form(
+			array(
+				
+				'class'=>'form-group col-4',
+				'id'=>'food_form',
+				'enctype'=>"multipart/form-data"
+			)
+		);
+		?>
+<label for="food_Name"> 餐品名</label>
+<?
+		echo $this->tag->textField(
+			array(
+				'food_Name',
+				'class'=>'form-control form-group',
+				'placeholder'=>'餐品名',
+				'required'=>'required'
+
+		));
+
+		?>
+		
+		<label for="food_Url">餐品图片</label>
+		
+		<?
+		echo $this->tag->fileField(array(
+				'food_Url',
+				'class'=>'form-control form-group',
+				'placeholder'=>'餐品图片',
+				'accept'=>"image/jpeg,image/jpg,image/png"
+			));
+		?>
+		<img src="" alt="" id="food_url" class="img-fluid">
+
+<label for="food_Price">餐品价格</label>
+<div class="form-group form-inline">
+		￥<input type="number" name="food_Price" value="" class="form-control form-group col-4" min='0' max="999" required='required'></div>
+<div class="form-group">		 
+<label for='food_description'>餐品介绍</label>
+<TEXTAREA class='form-control' name='food_description' row="4" style='resize: none;'>
+	
+</TEXTAREA>
+</div>
+<div class="form-group">
+<label for="food_type">餐品种类</label>
+<?= $this->tag->select(array(
+    'food_Type',
+    Type::find(),
+    'using'=>array('food_type','food_type'),
+    
+    'class' => 'form-control',
+));?>
+</div>
+<?= $this->tag->submitButton(
+      array(
+        "添加",
+        'class'=>'btn btn-primary btn-block col-2',
+        'name'=>'add'
+    )
+) ?>
+
+		<?
+		echo $this->tag->endform();?>
+
+</div>
+
+
+<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+	 chromium.org/developers/how-tos/chrome-frame-getting-started -->
+<!--[if lt IE 7 ]>
+	<script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+	<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+<![endif]-->
+
+<script>
+	$(document).ready(function(){
+		$('#food_form').submit(function(e){
+			e.preventDefault();
+			var formData = new FormData(this);
+			$.ajax({
+			
+				processData: false,
+				contentType: false,
+                url:"add",
+                type:"post",
+                data: formData,
+                success:function(data){
+                   alert(data);
+                   return false;
+                },
+                error:function(e){
+                    alert('失败');
+                    return false;
+                }});});}
+);
+</script>
