@@ -86,7 +86,7 @@ class WeixinController extends \Phalcon\Mvc\Controller
         // }
 
         
-        return json_encode($foodset);
+       
          
     }
 
